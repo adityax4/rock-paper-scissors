@@ -5,12 +5,18 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
 
-    if(playerSelection.toLowerCase()===computerSelection.toLowerCase()){
+    let conditionOne = (playerSelection==="paper"&&computerSelection==="rock");
+    let conditionTwo = (playerSelection==="rock"&&computerSelection==="scissors");
+    let conditonThree =(playerSelection==="scissors"&&computerSelection==="paper");
+
+    if(playerSelection===computerSelection){
         return 1;
     }
     else{
-        if((playerSelection.toLowerCase()==="paper"&&computerSelection.toLowerCase()==="rock") || (playerSelection.toLowerCase()==="rock" && computerSelection.toLowerCase()==="scissors") || (playerSelection.toLowerCase()==="scissors" && computerSelection.toLowerCase()==="paper")){
+        if(conditionOne || conditionTwo || conditonThree){
             return 2;
         }
         else return 3;
@@ -44,7 +50,6 @@ function playGame(){
     }
     else return `It's a Tie!`;
 }
-
 
 
 console.log(playGame());
