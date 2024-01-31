@@ -5,14 +5,15 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    if(playerSelection.toLowerCase()==computerSelection.toLowerCase()){
+
+    if(playerSelection.toLowerCase()===computerSelection.toLowerCase()){
         return 1;
     }
     else{
-        if(playerSelection=="paper"&&computerSelection=="Rock" || playerSelection=="rock" && computerSelection=="Scissors" || playerSelection=="scissors" && computerSelection=="Paper"){
+        if((playerSelection.toLowerCase()==="paper"&&computerSelection.toLowerCase()==="rock") || (playerSelection.toLowerCase()==="rock" && computerSelection.toLowerCase()==="scissors") || (playerSelection.toLowerCase()==="scissors" && computerSelection.toLowerCase()==="paper")){
             return 2;
         }
-        return 3;
+        else return 3;
     }
 }
 
@@ -30,7 +31,10 @@ function playGame(){
             computerScore++;
         }
         
-        console.log(`Your Score: ${playerScore} | Computer Score: ${computerScore}`)
+        console.log(`You chose ${playerSelection} | Computer chose ${computerSelection}`);
+        console.log(`Your Score: ${playerScore} | Computer Score: ${computerScore}`);
+        
+        
     }
     if(playerScore>computerScore){
         return `You Win!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
@@ -40,6 +44,7 @@ function playGame(){
     }
     else return `It's a Tie!`;
 }
+
 
 
 console.log(playGame());
