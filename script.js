@@ -32,7 +32,7 @@ function playGame(){
     let computerScore=0;
     // or for loop (i from 1 to 5) 5 rounds
     // while rounds and (first to score 5 points wins)
-    while(computerScore!=5||playerScore!=5) {
+    while(computerScore!==5||playerScore!==5) {
         // user input
         let playerSelection = prompt("Rock or Paper or Scissors: ");
         const computerSelection = getComputerChoice();
@@ -55,7 +55,7 @@ function playGame(){
         return `You Win!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
     }
     else if(computerScore>playerScore){
-        return `You Lose!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
+        return `Computer Win!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
     }
     else return `It's a Tie!`;
 }
