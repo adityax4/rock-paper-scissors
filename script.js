@@ -1,28 +1,39 @@
+let playerScore = 0;
+let computerScore = 0;
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const div = document.querySelector("div");
+
+rock.addEventListener('click', ()=>console.log(playRound("rock")));
+paper.addEventListener('click', ()=>playRound("paper"));
+scissors.addEventListener('click', ()=>playRound("scissors"));
+
+
+
+
 function getComputerChoice(){ // random choice generate 
-    let choices = ["Rock", "Paper", "Scissors"]; 
+    let choices = ["rock", "paper", "scissors"]; 
     let randomIndex = Math.floor(Math.random()*choices.length);
     return choices[randomIndex];
 }
 
-function playRound(playerSelection, computerSelection){ 
-    // play one round
-    // convert to lower case because case insensitivity
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-
+function playRound(playerSelection){
+    let computerSelection=getComputerChoice();
     // logic conditions for rockPaperScissors game
     let conditionOne = (playerSelection==="paper"&&computerSelection==="rock");
     let conditionTwo = (playerSelection==="rock"&&computerSelection==="scissors");
     let conditonThree =(playerSelection==="scissors"&&computerSelection==="paper");
 
     if(playerSelection===computerSelection){
-        return 1; // tie
+        return "It's a Tie!";
     }
     else{
         if(conditionOne || conditionTwo || conditonThree){
-            return 2; // player wins!
+            return "You Win!"; // player wins!
         }
-        else return 3; // computer wins!
+        else return "Computer Wins!"; // computer wins!
     }
 }
 
@@ -34,7 +45,7 @@ function playGame(){
     // while rounds and (first to score 5 points wins)
     while(computerScore!==5 && playerScore!==5) {
         // user input
-        let playerSelection = prompt("Rock or Paper or Scissors: ");
+        let playerSelection;
         let computerSelection = getComputerChoice();
         // result stores (who wins)
         let result = playRound(playerSelection, computerSelection);
@@ -59,6 +70,3 @@ function playGame(){
     }
     else return `It's a Tie!`;
 }
-
-// Game Starts
-console.log(playGame());
