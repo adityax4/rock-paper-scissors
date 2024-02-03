@@ -4,13 +4,17 @@ let computerScore = 0;
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
-const div = document.querySelector("div");
+const divTwo = document.querySelector("#result");
+const divOne = document.querySelector("#score");
 
-rock.addEventListener('click', ()=>console.log(playRound("rock")));
-paper.addEventListener('click', ()=>playRound("paper"));
-scissors.addEventListener('click', ()=>playRound("scissors"));
+rock.addEventListener('click', ()=>displayResult(playRound("rock")));
+paper.addEventListener('click', ()=>displayResult(playRound("paper")));
+scissors.addEventListener('click', ()=>displayResult(playRound("scissors")));
 
-
+function displayResult(result){
+    divTwo.textContent=result;
+    divOne.textContent=`Your Score: ${playerScore} | Computer Score: ${computerScore}`;
+}
 
 
 function getComputerChoice(){ // random choice generate 
@@ -21,7 +25,7 @@ function getComputerChoice(){ // random choice generate
 
 function playRound(playerSelection){
     let computerSelection=getComputerChoice();
-    // logic conditions for rockPaperScissors game
+
     let conditionOne = (playerSelection==="paper"&&computerSelection==="rock");
     let conditionTwo = (playerSelection==="rock"&&computerSelection==="scissors");
     let conditonThree =(playerSelection==="scissors"&&computerSelection==="paper");
@@ -31,16 +35,17 @@ function playRound(playerSelection){
     }
     else{
         if(conditionOne || conditionTwo || conditonThree){
+            playerScore++;
             return "You Win!"; // player wins!
         }
-        else return "Computer Wins!"; // computer wins!
+        else{
+            computerScore++;
+            return "Computer Wins!";
+        }
     }
 }
 
 function playGame(){
-    // maintain score
-    let playerScore=0;
-    let computerScore=0;
     // or for loop (i from 1 to 5) 5 rounds
     // while rounds and (first to score 5 points wins)
     while(computerScore!==5 && playerScore!==5) {
@@ -51,9 +56,9 @@ function playGame(){
         let result = playRound(playerSelection, computerSelection);
 
         if (result === 2) {
-            playerScore++;
+            
         } else if (result === 3) {
-            computerScore++;
+            
         }
         // displays choices and scores
         console.log(`You chose ${playerSelection} | Computer chose ${computerSelection}`);
