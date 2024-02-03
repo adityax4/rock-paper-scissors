@@ -6,9 +6,10 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const scoreDisplay = document.querySelector("#score");
 const resultDisplay = document.querySelector("#result");
+const showWinner = document.querySelector("p");
 
 const showChoice = document.createElement("p");
-const showWinner = document.querySelector("p");
+
 
 rock.addEventListener('click', ()=>displayResult(playRound("rock")));
 paper.addEventListener('click', ()=>displayResult(playRound("paper")));
@@ -31,6 +32,7 @@ function announceWinner() {
         showWinner.textContent="COMPUTER WINS!";
     }
 
+    
     // Reset scores for a new game
     playerScore = 0;
     computerScore = 0;
