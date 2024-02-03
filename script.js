@@ -66,34 +66,3 @@ function playRound(playerSelection){
         }
     }
 }
-
-function playGame(){
-    // or for loop (i from 1 to 5) 5 rounds
-    // while rounds and (first to score 5 points wins)
-    while(computerScore!==5 && playerScore!==5) {
-        // user input
-        let playerSelection;
-        let computerSelection = getComputerChoice();
-        // result stores (who wins)
-        let result = playRound(playerSelection, computerSelection);
-
-        if (result === 2) {
-            
-        } else if (result === 3) {
-            
-        }
-        // displays choices and scores
-        console.log(`You chose ${playerSelection} | Computer chose ${computerSelection}`);
-        console.log(`Your Score: ${playerScore} | Computer Score: ${computerScore}`);
-        
-        
-    }
-    // shows the final winner
-    if(playerScore>computerScore){
-        return `You Win!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
-    }
-    else if(computerScore>playerScore){
-        return `Computer Win!, Your Score: ${playerScore} | Computer Score: ${computerScore}`;
-    }
-    else return `It's a Tie!`;
-}
