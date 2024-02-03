@@ -4,17 +4,22 @@ let computerScore = 0;
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
-const divTwo = document.querySelector("#result");
 const divOne = document.querySelector("#score");
+const divTwo = document.querySelector("#result");
+
+const showChoice = document.createElement("p");
 
 rock.addEventListener('click', ()=>displayResult(playRound("rock")));
 paper.addEventListener('click', ()=>displayResult(playRound("paper")));
 scissors.addEventListener('click', ()=>displayResult(playRound("scissors")));
 
 function displayResult(result){
-    divTwo.textContent=result;
     divOne.textContent=`Your Score: ${playerScore} | Computer Score: ${computerScore}`;
+    divTwo.textContent=result;
+    divOne.appendChild(showChoice);
 }
+
+
 
 
 function getComputerChoice(){ // random choice generate 
@@ -36,11 +41,11 @@ function playRound(playerSelection){
     else{
         if(conditionOne || conditionTwo || conditonThree){
             playerScore++;
-            return "You Win!"; // player wins!
+            return `${playerSelection} beats ${computerSelection}`;
         }
         else{
             computerScore++;
-            return "Computer Wins!";
+            return `${computerSelection} beats ${playerSelection}`;
         }
     }
 }
