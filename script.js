@@ -8,17 +8,17 @@ const divOne = document.querySelector("#score");
 const divTwo = document.querySelector("#result");
 
 const showChoice = document.createElement("p");
-const showWinner = document.createElement("p");
+const showWinner = document.querySelector("p");
 
 rock.addEventListener('click', ()=>displayResult(playRound("rock")));
 paper.addEventListener('click', ()=>displayResult(playRound("paper")));
 scissors.addEventListener('click', ()=>displayResult(playRound("scissors")));
 
 function displayResult(result){
+    showWinner.textContent="";
     divOne.textContent=`Your Score: ${playerScore} | Computer Score: ${computerScore}`;
     divTwo.textContent=result;
     divOne.appendChild(showChoice);
-    divTwo.appendChild(showWinner);
     if (playerScore === 5 || computerScore === 5) {
         announceWinner();
     }
@@ -34,6 +34,7 @@ function announceWinner() {
     // Reset scores for a new game
     playerScore = 0;
     computerScore = 0;
+    showChoice.textContent="";
 }
 
 
