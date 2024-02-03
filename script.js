@@ -8,6 +8,7 @@ const divOne = document.querySelector("#score");
 const divTwo = document.querySelector("#result");
 
 const showChoice = document.createElement("p");
+const showWinner = document.createElement("p");
 
 rock.addEventListener('click', ()=>displayResult(playRound("rock")));
 paper.addEventListener('click', ()=>displayResult(playRound("paper")));
@@ -17,9 +18,23 @@ function displayResult(result){
     divOne.textContent=`Your Score: ${playerScore} | Computer Score: ${computerScore}`;
     divTwo.textContent=result;
     divOne.appendChild(showChoice);
+    divTwo.appendChild(showWinner);
+    if (playerScore === 5 || computerScore === 5) {
+        announceWinner();
+    }
 }
 
+function announceWinner() {
+    if (playerScore === 5) {
+        showWinner.textContent="YOU WIN!";
+    } else {
+        showWinner.textContent="COMPUTER WIN!";
+    }
 
+    // Reset scores for a new game
+    playerScore = 0;
+    computerScore = 0;
+}
 
 
 function getComputerChoice(){ // random choice generate 
@@ -30,6 +45,7 @@ function getComputerChoice(){ // random choice generate
 
 function playRound(playerSelection){
     let computerSelection=getComputerChoice();
+    showChoice.textContent=`You chose ${playerSelection} | Computer chose ${computerSelection}`;
 
     let conditionOne = (playerSelection==="paper"&&computerSelection==="rock");
     let conditionTwo = (playerSelection==="rock"&&computerSelection==="scissors");
@@ -41,6 +57,7 @@ function playRound(playerSelection){
     else{
         if(conditionOne || conditionTwo || conditonThree){
             playerScore++;
+            
             return `${playerSelection} beats ${computerSelection}`;
         }
         else{
