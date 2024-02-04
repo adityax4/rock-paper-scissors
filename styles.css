@@ -1,0 +1,60 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+    margin: 0;
+    margin-bottom: 20px;
+    background-color: lightgreen;
+}
+
+button{
+    padding: 20px 50px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+#rock{
+    background-color: rgb(20, 176, 20);
+    color: white;
+}
+
+#paper{
+    background-color: rgb(60, 60, 248);
+    color: white;
+}
+
+#scissors{
+    background-color: rgb(249, 50, 50);
+    color: white;
+}
+
+#playAgain{
+    background-color: aqua;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#score{
+    background-color: lightblue;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#result{
+    background-color: lightpink;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#winner{
+    font-size: 100px;
+    font-style: italic;
+    font-weight: bold;
+    background-color: lightsalmon;
+    color: orangered;
+}
