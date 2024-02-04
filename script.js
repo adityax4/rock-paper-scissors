@@ -7,6 +7,7 @@ const scissors = document.querySelector("#scissors");
 const scoreDisplay = document.querySelector("#score");
 const resultDisplay = document.querySelector("#result");
 const showWinner = document.querySelector("p");
+const playAgainButton = document.querySelector("#playAgain");
 
 const showChoice = document.createElement("p");
 
@@ -33,12 +34,28 @@ function announceWinner() {
     }
 
     
-    // Reset scores for a new game
-    playerScore = 0;
-    computerScore = 0;
-    showChoice.textContent="";
+    playAgainButton.style.display = "block";
+
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
 }
 
+playAgainButton.addEventListener('click', () => {
+    // Reset scores and clear displays
+    playerScore = 0;
+    computerScore = 0;
+    showWinner.textContent = "";
+    scoreDisplay.textContent = "Your Score: 0 | Computer Score: 0";
+    resultDisplay.textContent = "";
+    showChoice.textContent = "";
+
+    // Hide the Play Again button again
+    playAgainButton.style.display = "none";
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+});
 
 function getComputerChoice(){ // random choice generate 
     let choices = ["rock", "paper", "scissors"]; 
